@@ -31,9 +31,12 @@ jobs:
         path: output.ipynb
 
     - name: Commit graphs to repository
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
       run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "Your Name"
+        git config user.email "your-email@example.com"
+        git remote set-url origin https://x-access-token:${GH_PAT}@github.com/marcelohfms/n8n.git
         git add graficos_relatorio/
         git commit -m "Add generated graphs"
-        git push
+        git push origin main
