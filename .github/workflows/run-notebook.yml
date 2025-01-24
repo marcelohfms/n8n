@@ -1,0 +1,31 @@
+name: Execute Notebook
+
+on:
+  workflow_dispatch: # Allows the workflow to be triggered manually or via API
+
+jobs:
+  run-notebook:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        pip install jupyter nbconvert
+
+    - name: Execute notebook
+      run: |
+        jupyter nbconvert --execute --to notebook --output output.ipynb Graficos-Relatorio-Performance.ipynb
+
+    - name: Upload Notebook (Optional)
+      uses: actions/upload-artifact@v3
+      with:
+        name: executed-notebook
+        path: output.ipynb
