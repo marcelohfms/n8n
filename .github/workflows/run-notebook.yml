@@ -22,7 +22,7 @@ jobs:
 
     - name: Execute notebook
       run: |
-        jupyter nbconvert --execute --to notebook --output output.ipynb Graficos-Relatorio-Performance.ipynb
+        jupyter nbconvert --execute --to notebook --output output.ipynb Graficos-Relatorio-Performance.ipynb || exit 1
 
     - name: Upload Notebook (Optional)
       uses: actions/upload-artifact@v3
