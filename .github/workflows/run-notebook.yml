@@ -24,12 +24,6 @@ jobs:
       run: |
         jupyter nbconvert --execute --to notebook --output output.ipynb Graficos_Relatorio_Performance.ipynb || exit 1
 
-    - name: Upload Notebook (Optional)
-      uses: actions/upload-artifact@v3
-      with:
-        name: executed-notebook
-        path: output.ipynb
-
     - name: Commit graphs to repository
       env:
         GH_PAT: ${{ secrets.GH_PAT }}
