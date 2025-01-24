@@ -30,11 +30,6 @@ jobs:
         name: executed-notebook
         path: output.ipynb
 
-    - name: Clean up old files
-      run: |
-        git rm -rf graficos_relatorio/  # Remove all files in the folder
-        git commit -m "Clean up old files" || echo "No files to clean"
-
     - name: Commit graphs to repository
       env:
         GH_PAT: ${{ secrets.GH_PAT }}
