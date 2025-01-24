@@ -18,7 +18,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install jupyter nbconvert pandas numpy matplotlib datetime
+        pip install jupyter nbconvert pandas numpy matplotlib datetime openpyxl
 
     - name: Execute notebook
       run: |
